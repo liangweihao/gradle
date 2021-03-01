@@ -42,8 +42,9 @@ public class JpmsConfiguration {
         "--add-opens", "java.base/java.nio.charset=ALL-UNNAMED" // required by BeanSchemaKt
     ));
 
-    private static final List<String> WORKER_JPMS_JVM_ARGS = Collections.unmodifiableList(Arrays.asList(
-        "--add-opens", "java.base/java.util=ALL-UNNAMED" // required by native platform: WrapperProcess.getEnv
+    public static final List<String> WORKER_JPMS_JVM_ARGS = Collections.unmodifiableList(Arrays.asList(
+        "--add-opens", "java.base/java.util=ALL-UNNAMED", // required by native platform: WrapperProcess.getEnv
+        "--add-opens", "java.base/java.lang=ALL-UNNAMED" // required by native platform: ClassLoaderUtils
     ));
 
     public static final List<String> GRADLE_DAEMON_JPMS_JVM_ARGS;
