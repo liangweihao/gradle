@@ -46,7 +46,6 @@ public class JvmApplicationProjectInitDescriptor extends JvmProjectInitDescripto
     @Override
     public void generateProjectBuildScript(String projectName, InitSettings settings, BuildScriptBuilder buildScriptBuilder) {
         super.generateProjectBuildScript(projectName, settings, buildScriptBuilder);
-        applyKotlinCompilerWorkaroundIfJdk16(settings);
 
         if ("app".equals(projectName)) {
             buildScriptBuilder.block(null, "application", b -> {
