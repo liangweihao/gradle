@@ -180,9 +180,9 @@ fun Test.configureJvmForTest() {
         }.getOrNull()
     }
     javaLauncher.set(launcher)
-    if (jvmVersionForTest().canCompileOrRun(9) && (isUnitTest() || usesEmbeddedExecuter())) {
+    if (jvmVersionForTest().canCompileOrRun(9)) {
         if (isUnitTest() || usesEmbeddedExecuter()) {
-            // TODO: replace all of below with jvmArgs(org.gradle.internal.jvm.JpmsConfiguration.GRADLE_DAEMON_JPMS_JVM_ARGS) once wrapper is updated
+            // TODO: replace the next two invocations of jvmArgs below with jvmArgs(org.gradle.internal.jvm.JpmsConfiguration.GRADLE_DAEMON_JPMS_JVM_ARGS) once wrapper is updated
             jvmArgs(org.gradle.internal.jvm.GroovyJpmsConfiguration.GROOVY_JPMS_JVM_ARGS)
             // used by Configuration Cache
             jvmArgs(
