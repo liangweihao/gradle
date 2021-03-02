@@ -53,6 +53,11 @@ public class JpmsConfiguration {
         List<String> daemonJpmsJvmArgs = new ArrayList<String>();
         daemonJpmsJvmArgs.addAll(GROOVY_JPMS_JVM_ARGS);
         daemonJpmsJvmArgs.addAll(CONFIGURATION_CACHE_JPMS_JVM_ARGS);
+
+        // Workaround until external kotlin-dsl plugins support JDK16 properly
+        // https://youtrack.jetbrains.com/issue/KT-43704 - should be in 1.5.x line
+        daemonJpmsJvmArgs.add("-Dkotlin.daemon.jvm.options=--illegal-access=permit");
+
         GRADLE_DAEMON_JPMS_JVM_ARGS = Collections.unmodifiableList(daemonJpmsJvmArgs);
     }
 }
