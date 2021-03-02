@@ -193,6 +193,7 @@ fun Test.configureJvmForTest() {
             )
         } else {
             jvmArgs(listOf("--add-opens", "java.base/java.util=ALL-UNNAMED")) // Used in tests by native platform library: WrapperProcess.getEnv
+            jvmArgs(listOf("--add-opens", "java.base/java.lang=ALL-UNNAMED")) // Used in tests by ClassLoaderUtils
         }
     }
 }
