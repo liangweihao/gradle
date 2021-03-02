@@ -38,7 +38,8 @@ public class JpmsConfiguration {
 
     public static final List<String> CONFIGURATION_CACHE_JPMS_JVM_ARGS = Collections.unmodifiableList(Arrays.asList(
         "--add-opens", "java.prefs/java.util.prefs=ALL-UNNAMED", // required by JavaObjectSerializationCodec.kt
-        "--add-opens", "java.base/java.nio.charset=ALL-UNNAMED" // required by BeanSchemaKt
+        "--add-opens", "java.base/java.nio.charset=ALL-UNNAMED", // required by BeanSchemaKt
+        "--add-opens", "java.base/java.net=ALL-UNNAMED" // required by JavaObjectSerializationCodec
     ));
 
     public static final List<String> WORKER_JPMS_JVM_ARGS = Collections.unmodifiableList(Arrays.asList(
