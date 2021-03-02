@@ -25,8 +25,7 @@ import java.util.List;
  * These JVM arguments should be passed to any Gradle process that will be running on Java 9+
  * Gradle accesses those packages reflectively. On Java versions 9 to 15, the users will get
  * a warning they can do nothing about. On Java 16+, strong encapsulation of JDK internals is
- * enforced and not having those arguments will result in runtime exceptions on illegal
- * reflective accesses.
+ * enforced and not having the explicit permissions for reflective accesses will result in runtime exceptions.
  */
 public class JpmsConfiguration {
 
