@@ -36,7 +36,7 @@ public class JpmsConfiguration {
         "--add-opens", "java.prefs/java.util.prefs=ALL-UNNAMED" // required by PreferenceCleaningGroovySystemLoader
     ));
 
-    public static final List<String> CONFIGURATION_CACHE_JPMS_JVM_ARGS = Collections.unmodifiableList(Arrays.asList(
+    private static final List<String> CONFIGURATION_CACHE_JPMS_JVM_ARGS = Collections.unmodifiableList(Arrays.asList(
         "--add-opens", "java.prefs/java.util.prefs=ALL-UNNAMED", // required by JavaObjectSerializationCodec.kt
         "--add-opens", "java.base/java.nio.charset=ALL-UNNAMED", // required by BeanSchemaKt
         "--add-opens", "java.base/java.net=ALL-UNNAMED" // required by JavaObjectSerializationCodec
@@ -44,7 +44,7 @@ public class JpmsConfiguration {
 
     public static final List<String> WORKER_JPMS_JVM_ARGS = Collections.unmodifiableList(Arrays.asList(
         "--add-opens", "java.base/java.util=ALL-UNNAMED", // required by native platform: WrapperProcess.getEnv
-        "--add-opens", "java.base/java.lang=ALL-UNNAMED" // required by native platform: ClassLoaderUtils
+        "--add-opens", "java.base/java.lang=ALL-UNNAMED" // required by ClassLoaderUtils
     ));
 
     public static final List<String> GRADLE_DAEMON_JPMS_JVM_ARGS;
