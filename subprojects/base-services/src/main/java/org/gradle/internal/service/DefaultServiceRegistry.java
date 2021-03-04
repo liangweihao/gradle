@@ -159,7 +159,7 @@ public class DefaultServiceRegistry implements ServiceRegistry, Closeable, Conta
 
     private void findProviderMethods(Object target) {
         Class<?> type = target.getClass();
-        RelevantMethods methods = RelevantMethods.getMethods(type);
+        RelevantMethods methods = RelevantMethods.getMethods(type); //这里根据输入的类获取方法的类别
         for (ServiceMethod method : methods.decorators) {
             if (parentServices == null) {
                 throw new ServiceLookupException(String.format("Cannot use decorator method %s.%s() when no parent registry is provided.", type.getSimpleName(), method.getName()));
@@ -596,6 +596,10 @@ public class DefaultServiceRegistry implements ServiceRegistry, Closeable, Conta
         }
     }
 
+
+    /**
+     * 单利服务
+     */
     private static abstract class SingletonService extends ManagedObjectServiceProvider<Object> implements Service {
         private enum BindState {UNBOUND, BINDING, BOUND}
 
@@ -883,6 +887,9 @@ public class DefaultServiceRegistry implements ServiceRegistry, Closeable, Conta
         }
     }
 
+    /**
+     *
+     */
     private static class ConstructorService extends FactoryService {
         private final Constructor<?> constructor;
 

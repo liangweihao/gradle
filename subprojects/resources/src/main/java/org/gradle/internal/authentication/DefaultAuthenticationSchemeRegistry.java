@@ -26,6 +26,11 @@ import java.util.Map;
 public class DefaultAuthenticationSchemeRegistry implements AuthenticationSchemeRegistry {
     Map<Class<? extends Authentication>, Class<? extends Authentication>> registeredSchemes = Maps.newHashMap();
 
+    /**
+     * @param type 接口名字
+     * @param implementationType 接口的具体实现
+     * @param <T>
+     */
     @Override
     public <T extends Authentication> void registerScheme(Class<T> type, final Class<? extends T> implementationType) {
         registeredSchemes.put(type, implementationType);

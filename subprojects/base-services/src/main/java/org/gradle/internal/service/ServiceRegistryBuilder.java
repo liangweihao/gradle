@@ -19,6 +19,11 @@ package org.gradle.internal.service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 根据传入的属性参数 这些参数单独来时是没有关联的 然后通过builder组装成为一个接口的实现 也就是将没有关联的属性构建成为一个真是的属性
+ *
+ * 多参数的构建 - 利用Builder模式
+ */
 public class ServiceRegistryBuilder {
     private final List<ServiceRegistry> parents = new ArrayList<ServiceRegistry>();
     private final List<Object> providers = new ArrayList<Object>();

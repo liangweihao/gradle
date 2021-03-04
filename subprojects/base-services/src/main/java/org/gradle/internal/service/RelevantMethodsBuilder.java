@@ -23,15 +23,24 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * 解析出来class的方法属性
+ */
 class RelevantMethodsBuilder {
     final List<Method> remainingMethods;
-    final Class<?> type;
+    final Class<?> type; // 当前注册的类的类型
+    // TODO:LWH  2021/3/4 其主要的作用还是考虑到插入的数据扩容问题
     final LinkedList<Method> decorators = new LinkedList<Method>();
     final LinkedList<Method> factories = new LinkedList<Method>();
     final LinkedList<Method> configurers = new LinkedList<Method>();
 
+    // 所有方法的签名
     private final Set<String> seen = new HashSet<String>();
 
+    /**
+     * 根据传入的服务类 非DefaultServiceRegistry 获取所有声明的方法
+     * @param type
+     */
     RelevantMethodsBuilder(Class<?> type) {
         this.type = type;
         this.remainingMethods = new LinkedList<Method>();
@@ -41,6 +50,12 @@ class RelevantMethodsBuilder {
         }
     }
 
+    /**
+     * 这里默认索引如果添加过了 就会从迭代器里面移除
+     * @param iterator
+     * @param builder
+     * @param method
+     */
     void add(Iterator<Method> iterator, List<Method> builder, Method method) {
         StringBuilder signature = new StringBuilder();
         signature.append(method.getName());
@@ -54,6 +69,10 @@ class RelevantMethodsBuilder {
         iterator.remove();
     }
 
+    /**
+     * 构造这用来处理这个方法属性的内容
+     * @return
+     */
     RelevantMethods build() {
         return new RelevantMethods(decorators, factories, configurers);
     }

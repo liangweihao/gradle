@@ -16,11 +16,14 @@
 
 package org.gradle.internal.resource;
 
-import javax.annotation.Nullable;
 import java.io.File;
 import java.net.URI;
 
+import javax.annotation.Nullable;
+
 /**
+ * 关于本地资源的最小单位
+ * 资源属性包含 文件的名字 文件的路径 文件的
  * Represents the location or identity of a resource.
  */
 public interface ResourceLocation {

@@ -39,6 +39,18 @@ public class HttpResourcesPluginServiceRegistry extends AbstractPluginServiceReg
         registration.addProvider(new AuthenticationSchemeAction());
     }
 
+    //////////////////////////////////LWH//////////////////////////////////////
+    // 以这个方法为例子  通过反射的形式 我们需要创建 facotry 然后就会根据参数获取到相应的工程方法
+    ///////////////////////////////////////////////////////////////////////////
+
+    /*
+    * 1。初始化class
+    * 2。解析出类的所有的方法和方法的参数
+    * 3。根据方法的名字创建 相应的factory 然后根据相应的factory创建
+    *
+    *
+    * */
+
     private static class GlobalScopeServices {
         SslContextFactory createSslContextFactory() {
             return new DefaultSslContextFactory();

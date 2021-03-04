@@ -35,6 +35,7 @@ public class GradleWrapperMain {
     public static final String GRADLE_QUIET_OPTION = "q";
     public static final String GRADLE_QUIET_DETAILED_OPTION = "quiet";
 
+    // TODO:LWH  2021/3/4 整个gradle的入口函数
     public static void main(String[] args) throws Exception {
         File wrapperJar = wrapperJar();
         File propertiesFile = wrapperProperties(wrapperJar);

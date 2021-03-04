@@ -27,8 +27,11 @@ public class RelevantMethods {
     private static final ConcurrentMap<Class<?>, RelevantMethods> METHODS_CACHE = new ConcurrentHashMap<Class<?>, RelevantMethods>();
     private static final ServiceMethodFactory SERVICE_METHOD_FACTORY = new DefaultServiceMethodFactory();
 
+    // 装饰着方法
     final List<ServiceMethod> decorators;
+    // 工厂类
     final List<ServiceMethod> factories;
+    // 配置方法
     final List<ServiceMethod> configurers;
 
     RelevantMethods(List<Method> decorators, List<Method> factories, List<Method> configurers) {
@@ -65,6 +68,10 @@ public class RelevantMethods {
         return relevantMethods;
     }
 
+    /**
+     * 如果是configure的配置方法  那么就会映射到配置方法中
+     * @param builder
+     */
     private static void addConfigureMethods(RelevantMethodsBuilder builder) {
         Class<?> type = builder.type;
         Iterator<Method> iterator = builder.remainingMethods.iterator();
@@ -79,6 +86,10 @@ public class RelevantMethods {
         }
     }
 
+    /**
+     * 非静态创建方法
+     * @param builder
+     */
     private static void addFactoryMethods(RelevantMethodsBuilder builder) {
         Class<?> type = builder.type;
         Iterator<Method> iterator = builder.remainingMethods.iterator();
@@ -93,6 +104,10 @@ public class RelevantMethods {
         }
     }
 
+    /**
+     * 这里根据传入的对象反射出当前对象存在的一些方法 这里是create***** decorate*****
+     * @param builder
+     */
     private static void addDecoratorMethods(RelevantMethodsBuilder builder) {
         Class<?> type = builder.type;
         Iterator<Method> iterator = builder.remainingMethods.iterator();
@@ -109,6 +124,11 @@ public class RelevantMethods {
         }
     }
 
+    /**
+     * 获取方法的返回类型
+     * @param method
+     * @return
+     */
     private static boolean takesReturnTypeAsParameter(Method method) {
         for (Class<?> param : method.getParameterTypes()) {
             if (param.equals(method.getReturnType())) {
